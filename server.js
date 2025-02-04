@@ -5,7 +5,7 @@ const app = express();
 
 const PORT = 8000;
 
-// app.use(morgan("dev"));
+app.use(morgan("dev"));
 app.use(express.json());
 app.use("/api/v1/tasks", taskRouter);
 

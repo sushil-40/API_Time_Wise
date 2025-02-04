@@ -17,5 +17,14 @@ router.post("/", (req, res, next) => {
     message: "New tasks has been added successfully.",
   });
 });
+router.get("/", (req, res, next) => {
+  //do your code
+
+  res.json({
+    status: "success",
+    message: "Here are the tasks list.",
+    tasks: fakeDB,
+  });
+});
 
 export default router;
