@@ -10,8 +10,20 @@ POST {{baseURL}}
 Content-Type: application/json
 
 {
-    "task": "Cooking",
-    "hr": 20
+    "id":2,
+    "task": "Coding",
+    "hr": 40,
+    "type":"entry"
+}
+
+
+### PATCH the tasl list
+PATCH   {{baseURL}}
+Content-Type: application/json
+
+{
+    "id":2,
+    "type":"bad"
 }
 
 
