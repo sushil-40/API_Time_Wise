@@ -1,0 +1,14 @@
+# API-Time-wise
+@baseURL=http://localhost:8000/api/v1/tasks
+
+### GET server request
+GET {{baseURL}}
+
+
+### POST server request
+
+
+### PUT server request
+
+
+### Delete server request
