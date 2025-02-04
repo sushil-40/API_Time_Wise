@@ -1,14 +1,21 @@
 # API-Time-wise
 @baseURL=http://localhost:8000/api/v1/tasks
 
-### GET server request
+### GET the task list
 GET {{baseURL}}
 
 
-### POST server request
+### POST the task list
+POST {{baseURL}}
+Content-Type: application/json
+
+{
+    "task": "Coding",
+    "hr": 40
+}
 
 
-### PUT server request
+### PUT the task list
 
 
-### Delete server request
+### Delete the task list
