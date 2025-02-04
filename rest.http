@@ -27,7 +27,8 @@ Content-Type: application/json
 }
 
 
-### PUT the task list
 
 
 ### Delete the task list
+
+DELETE {{baseURL}}/2

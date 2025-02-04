@@ -50,4 +50,17 @@ router.patch("/", (req, res, next) => {
   });
 });
 
+// Delete taks
+router.delete("/:id?", (req, res, next) => {
+  //do your code
+  const { id } = req.params;
+
+  console.log(id);
+  fakeDB = fakeDB.filter((item) => item.id !== Number(id));
+  res.json({
+    status: "success",
+    message: "Your task has been deleted",
+    tasks: fakeDB,
+  });
+});
 export default router;
