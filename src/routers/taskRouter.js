@@ -1,5 +1,5 @@
 import express from "express";
-
+import mongoose from "mongoose";
 const router = express.Router();
 // let fakeDB = [
 //   { id: 3, task: "Gaming", hr: 20, type: "entry" },
@@ -12,22 +12,30 @@ const router = express.Router();
 //     message: "Hello Server",
 //   });
 // });
-router.post("/", (req, res, next) => {
+
+// Database table selecting
+const taskSchema = new mongoose.Schema({}, { strict: false });
+const TaskCollection = mongoose.model("Task", taskSchema); //tasks
+router.post("/", async (req, res, next) => {
   //do your code
-  // fakeDB.push(req.body);
-  // console.log(fakeDB);
+
+  console.log(req.body, "===========");
+  //insert task
+  const result = await TaskCollection(req.body).save();
+  console.log(result);
+
   res.json({
     status: "success",
     message: "New tasks has been added successfully.",
   });
 });
-router.get("/", (req, res, next) => {
+router.get("/", async (req, res, next) => {
   //do your code
-
+  const tasks = await TaskCollection.find();
   res.json({
     status: "success",
     message: "Here are the tasks list.",
-    tasks: {},
+    tasks,
   });
 });
 router.patch("/", (req, res, next) => {

@@ -10,10 +10,9 @@ POST {{baseURL}}
 Content-Type: application/json
 
 {
-    "id":2,
     "task": "Coding",
-    "hr": 40,
-    "type":"entry"
+    "hr": "entry",
+    "type":123
 }
 
 
