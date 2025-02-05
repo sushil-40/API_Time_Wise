@@ -38,11 +38,15 @@ router.get("/", async (req, res, next) => {
     tasks,
   });
 });
-router.patch("/", (req, res, next) => {
+router.patch("/", async (req, res, next) => {
   //do your code
   // console.log(req.body);
-  const { id, type } = req.body;
-  console.log(id, type);
+  const { _id, ...rest } = req.body;
+  // console.log(req.body);
+  const result = await TaskCollection.findByIdAndUpdate(_id, rest, {
+    new: true,
+  });
+  console.log(result);
   // fakeDB = fakeDB.map((item) => {
   //   if (item.id === id) {
   //     item.type = type;
@@ -58,11 +62,13 @@ router.patch("/", (req, res, next) => {
 });
 
 // Delete taks
-router.delete("/:id?", (req, res, next) => {
+router.delete("/:_id?", async (req, res, next) => {
   //do your code
-  const { id } = req.params;
+  const { _id } = req.params;
 
-  console.log(id);
+  console.log(_id);
+
+  const result = await TaskCollection.findByIdAndDelete(_id);
   // fakeDB = fakeDB.filter((item) => item.id !== Number(id));
   res.json({
     status: "success",

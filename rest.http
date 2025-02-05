@@ -21,8 +21,9 @@ PATCH   {{baseURL}}
 Content-Type: application/json
 
 {
-    "id":2,
-    "type":"bad"
+   "_id": "67a30e8811804b8cdac9ac69",
+  "type":"bad",
+  "hr":20
 }
 
 
@@ -30,4 +31,4 @@ Content-Type: application/json
 
 ### Delete the task list
 
-DELETE {{baseURL}}/2
+DELETE {{baseURL}}/67a30e8811804b8cdac9ac69
