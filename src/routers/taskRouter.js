@@ -1,11 +1,11 @@
 import express from "express";
 
 const router = express.Router();
-let fakeDB = [
-  { id: 3, task: "Gaming", hr: 20, type: "entry" },
-  { id: 2, task: "Cookng", hr: 10, type: "entry" },
-  { id: 1, task: "Coding", hr: 40, type: "entry" },
-];
+// let fakeDB = [
+//   { id: 3, task: "Gaming", hr: 20, type: "entry" },
+//   { id: 2, task: "Cookng", hr: 10, type: "entry" },
+//   { id: 1, task: "Coding", hr: 40, type: "entry" },
+// ];
 // router.all("/", (req, res, next) => {
 //   res.json({
 //     status: "success",
@@ -14,8 +14,8 @@ let fakeDB = [
 // });
 router.post("/", (req, res, next) => {
   //do your code
-  fakeDB.push(req.body);
-  console.log(fakeDB);
+  // fakeDB.push(req.body);
+  // console.log(fakeDB);
   res.json({
     status: "success",
     message: "New tasks has been added successfully.",
@@ -27,26 +27,25 @@ router.get("/", (req, res, next) => {
   res.json({
     status: "success",
     message: "Here are the tasks list.",
-    tasks: fakeDB,
+    tasks: {},
   });
 });
 router.patch("/", (req, res, next) => {
   //do your code
   // console.log(req.body);
   const { id, type } = req.body;
-
-  fakeDB = fakeDB.map((item) => {
-    if (item.id === id) {
-      item.type = type;
-      return item;
-    } else {
-      return item;
-    }
-  });
+  console.log(id, type);
+  // fakeDB = fakeDB.map((item) => {
+  //   if (item.id === id) {
+  //     item.type = type;
+  //     return item;
+  //   } else {
+  //     return item;
+  //   }
+  // });
   res.json({
     status: "success",
     message: "Your task has been updated",
-    tasks: fakeDB,
   });
 });
 
@@ -56,11 +55,10 @@ router.delete("/:id?", (req, res, next) => {
   const { id } = req.params;
 
   console.log(id);
-  fakeDB = fakeDB.filter((item) => item.id !== Number(id));
+  // fakeDB = fakeDB.filter((item) => item.id !== Number(id));
   res.json({
     status: "success",
     message: "Your task has been deleted",
-    tasks: fakeDB,
   });
 });
 export default router;
