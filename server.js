@@ -4,7 +4,6 @@ import morgan from "morgan";
 
 //connect mongoDB here   [below is inline import]
 import { connectMongoDb } from "./src/config/dbConfig.js";
-
 connectMongoDb();
 const app = express();
 

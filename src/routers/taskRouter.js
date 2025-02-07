@@ -1,5 +1,5 @@
 import express from "express";
-import mongoose from "mongoose";
+import mongoose, { Mongoose } from "mongoose";
 const router = express.Router();
 // let fakeDB = [
 //   { id: 3, task: "Gaming", hr: 20, type: "entry" },
@@ -16,6 +16,7 @@ const router = express.Router();
 // Database table selecting
 const taskSchema = new mongoose.Schema({}, { strict: false });
 const TaskCollection = mongoose.model("Task", taskSchema); //tasks
+
 router.post("/", async (req, res, next) => {
   //do your code
 
