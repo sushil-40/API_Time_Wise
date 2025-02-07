@@ -11,8 +11,8 @@ Content-Type: application/json
 
 {
     "task": "Coding",
-    "hr": "entry",
-    "type":123
+    "hr":70,
+     "abcdTest":"asfdf"
 }
 
 
@@ -21,7 +21,7 @@ PATCH   {{baseURL}}
 Content-Type: application/json
 
 {
-   "_id": "67a30e8811804b8cdac9ac69",
+   "_id": "67a30e4d11804b8cdac9ac65",
   "type":"bad",
   "hr":20
 }
@@ -31,4 +31,4 @@ Content-Type: application/json
 
 ### Delete the task list
 
-DELETE {{baseURL}}/67a30e8811804b8cdac9ac69
+DELETE {{baseURL}}/67a30d66c575fcc8652c7c0c

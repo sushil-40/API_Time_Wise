@@ -1,38 +1,37 @@
 import express from "express";
-import mongoose, { Mongoose } from "mongoose";
+import {
+  deleteTask,
+  getTasks,
+  insertTask,
+  updateTask,
+} from "../models/taskModel/TaskSchema.js";
 const router = express.Router();
-// let fakeDB = [
-//   { id: 3, task: "Gaming", hr: 20, type: "entry" },
-//   { id: 2, task: "Cookng", hr: 10, type: "entry" },
-//   { id: 1, task: "Coding", hr: 40, type: "entry" },
-// ];
-// router.all("/", (req, res, next) => {
-//   res.json({
-//     status: "success",
-//     message: "Hello Server",
-//   });
-// });
-
-// Database table selecting
-const taskSchema = new mongoose.Schema({}, { strict: false });
-const TaskCollection = mongoose.model("Task", taskSchema); //tasks
 
 router.post("/", async (req, res, next) => {
   //do your code
 
-  console.log(req.body, "===========");
-  //insert task
-  const result = await TaskCollection(req.body).save();
-  console.log(result);
+  try {
+    console.log(req.body, "===========");
+    //insert task
+    const result = await insertTask(req.body);
+    console.log(result);
 
-  res.json({
-    status: "success",
-    message: "New tasks has been added successfully.",
-  });
+    res.json({
+      status: "success",
+      message: "New tasks has been added successfully.",
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.json({
+      status: "error",
+      message: error.message,
+    });
+  }
 });
 router.get("/", async (req, res, next) => {
   //do your code
-  const tasks = await TaskCollection.find();
+  const tasks = await getTasks();
+
   res.json({
     status: "success",
     message: "Here are the tasks list.",
@@ -44,18 +43,9 @@ router.patch("/", async (req, res, next) => {
   // console.log(req.body);
   const { _id, ...rest } = req.body;
   // console.log(req.body);
-  const result = await TaskCollection.findByIdAndUpdate(_id, rest, {
-    new: true,
-  });
+  const result = await updateTask(_id, rest);
   console.log(result);
-  // fakeDB = fakeDB.map((item) => {
-  //   if (item.id === id) {
-  //     item.type = type;
-  //     return item;
-  //   } else {
-  //     return item;
-  //   }
-  // });
+
   res.json({
     status: "success",
     message: "Your task has been updated",
@@ -69,8 +59,7 @@ router.delete("/:_id?", async (req, res, next) => {
 
   console.log(_id);
 
-  const result = await TaskCollection.findByIdAndDelete(_id);
-  // fakeDB = fakeDB.filter((item) => item.id !== Number(id));
+  const result = await deleteTask(_id); // fakeDB = fakeDB.filter((item) => item.id !== Number(id));
   res.json({
     status: "success",
     message: "Your task has been deleted",
