@@ -13,8 +13,8 @@ router.post("/", async (req, res, next) => {
   try {
     console.log(req.body, "===========");
     //insert task
-    const result = await insertTask(req.body);
-    console.log(result);
+    // const result = await insertTask(req.body);
+    console.log(req.body);
 
     res.json({
       status: "success",
