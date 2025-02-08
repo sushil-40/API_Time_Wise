@@ -13,18 +13,23 @@ router.post("/", async (req, res, next) => {
   try {
     console.log(req.body, "===========");
     //insert task
-    // const result = await insertTask(req.body);
-    console.log(req.body);
+    const result = await insertTask(req.body);
+    console.log(result);
 
-    res.json({
-      status: "success",
-      message: "New tasks has been added successfully.",
-    });
+    result?._id
+      ? res.json({
+          status: "success",
+          message: "New tasks has been added successfully.",
+        })
+      : res.json({
+          status: "error",
+          message: "Unable to add tasks, try again later!.",
+        });
   } catch (error) {
     console.log(error.message);
     res.json({
       status: "error",
-      message: error.message,
+      message: error.message + "xxxxxxxxxxxxxxxxxx",
     });
   }
 });

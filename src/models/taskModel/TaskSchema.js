@@ -1,4 +1,4 @@
-import mongoose, { Mongoose } from "mongoose";
+import mongoose from "mongoose";
 
 // Database table selecting
 const taskSchema = new mongoose.Schema(
@@ -27,7 +27,7 @@ const TaskCollection = mongoose.model("Task", taskSchema); //tasks
 // export default mongoose.model("Task", taskSchema);
 
 export const insertTask = (taskObj) => {
-  return TaskCollection(req.body).save();
+  return TaskCollection(taskObj).save();
 };
 export const getTasks = () => {
   return TaskCollection.find();
