@@ -45,16 +45,27 @@ router.get("/", async (req, res, next) => {
 });
 router.patch("/", async (req, res, next) => {
   //do your code
-  // console.log(req.body);
-  const { _id, ...rest } = req.body;
-  // console.log(req.body);
-  const result = await updateTask(_id, rest);
-  console.log(result);
 
-  res.json({
-    status: "success",
-    message: "Your task has been updated",
-  });
+  try {
+    const { _id, ...rest } = req.body;
+
+    const result = await updateTask(_id, rest);
+
+    result?._id
+      ? res.json({
+          status: "success",
+          message: "Your task has been updated",
+        })
+      : res.json({
+          status: "Error",
+          message: "Unable to update the task, try again later !",
+        });
+  } catch (error) {
+    res.json({
+      status: "error",
+      message: error.message + "xxxxxxxxxxxxxxxxxx",
+    });
+  }
 });
 
 // Delete taks

@@ -21,10 +21,9 @@ PATCH   {{baseURL}}
 Content-Type: application/json
 
 {
-   "_id": "67a30e4d11804b8cdac9ac65",
+   "_id": "67a7e4ecf63be0ae6e6e0207",
   "type":"bad",
-  "hr":20
-}
+ }
 
 
 
