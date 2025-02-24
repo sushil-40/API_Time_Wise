@@ -69,16 +69,31 @@ router.patch("/", async (req, res, next) => {
 });
 
 // Delete taks
-router.delete("/:_id?", async (req, res, next) => {
+router.delete("/", async (req, res, next) => {
   //do your code
-  const { _id } = req.params;
+  // const { _id } = req.params;
 
-  console.log(_id);
+  // console.log(_id);
+  try {
+    console.log(req.body);
 
-  const result = await deleteTask(_id); // fakeDB = fakeDB.filter((item) => item.id !== Number(id));
-  res.json({
-    status: "success",
-    message: "Your task has been deleted",
-  });
+    const result = await deleteTask(req.body); // fakeDB = fakeDB.filter((item) => item.id !== Number(id));
+    console.log(result);
+
+    result?.deletedCount
+      ? res.json({
+          status: "success",
+          message: "Your task has been deleted",
+        })
+      : res.json({
+          status: "error",
+          message: "Unable to delete task, try again later !",
+        });
+  } catch (error) {
+    res.json({
+      status: "error",
+      message: error.message + "xxxxxxxxxxxxxxxxxx",
+    });
+  }
 });
 export default router;

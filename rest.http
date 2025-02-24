@@ -30,4 +30,8 @@ Content-Type: application/json
 
 ### Delete the task list
 
-DELETE {{baseURL}}/67a30d66c575fcc8652c7c0c
+DELETE {{baseURL}}
+Content-Type: application/json
+
+["67a7fe463bda68845f32b080","67a7e4ecf63be0ae6e6e0207","67a7dc0ea218f604150168ce"
+]
