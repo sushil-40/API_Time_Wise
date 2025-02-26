@@ -12,9 +12,10 @@
 import mongoose from "mongoose";
 
 // const mongoUrl = "mongodb://localhost:27017/online_time_wise";
-const mongoUrl =
-  "mongodb+srv://grayson9999:sushil123@cluster-time-wise-db.cieql.mongodb.net/time_wise?retryWrites=true&w=majority&appName=Cluster-time-wise-db";
+const mongoUrl = process.env.MONGO_URL;
+
 export const connectMongoDb = async () => {
+  console.log(mongoUrl);
   try {
     const conn = await mongoose.connect(mongoUrl);
     conn && console.log("DB Connected Successfully");
